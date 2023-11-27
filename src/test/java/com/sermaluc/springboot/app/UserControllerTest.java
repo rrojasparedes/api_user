@@ -28,57 +28,57 @@ import com.fasterxml.jackson.databind.JsonNode;
 class UserControllerTest {
 
 	private final static String BASE_URL = "/api/users/create";
-    private final static String CREATE_USER_OK_JSON = "/json/create_user_ok.json";
-    private final static String CREATE_USER_INVALID_EMAIL_JSON = "/json/create_user_invalid_email.json";
-    private final static String CREATE_USER_INVALID_PASSWORD_JSON = "/json/create_user_invalid_password.json";
-    
-    private MockMvc mockMvc;
+	private final static String CREATE_USER_OK_JSON = "/json/create_user_ok.json";
+	private final static String CREATE_USER_INVALID_EMAIL_JSON = "/json/create_user_invalid_email.json";
+	private final static String CREATE_USER_INVALID_PASSWORD_JSON = "/json/create_user_invalid_password.json";
 
-    @Autowired
-    private WebApplicationContext webApplicationContext;
+	private MockMvc mockMvc;
 
-    @BeforeEach
-    void setUp() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-    }
+	@Autowired
+	private WebApplicationContext webApplicationContext;
 
-    @Test
-    public void testCreateUserSuccess() throws Exception {
-        String json = readJsonFromFile(CREATE_USER_OK_JSON);
-        MvcResult result = performPostRequest(json);
-        assertEquals(201, result.getResponse().getStatus());
-    }
+	@BeforeEach
+	void setUp() {
+		mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+	}
 
-    @Test
-    public void testCreateUserInvalidEmailFormat(@Value("${email.invalid}") String emailInvalidMessage) throws Exception {
-        String json = readJsonFromFile(CREATE_USER_INVALID_EMAIL_JSON);
-        MvcResult result = performPostRequest(json);
-        assertEquals(emailInvalidMessage, getMessageFromResponse(result));
-    }
+	@Test
+	public void testCreateUserSuccess() throws Exception {
+		String json = readJsonFromFile(CREATE_USER_OK_JSON);
+		MvcResult result = performPostRequest(json);
+		assertEquals(201, result.getResponse().getStatus());
+	}
 
-    @Test
-    public void testCreateUserInvalidPasswordFormat(@Value("${password.invalid}") String passwordInvalidMessage) throws Exception {
-        String json = readJsonFromFile(CREATE_USER_INVALID_PASSWORD_JSON);
-        MvcResult result = performPostRequest(json);
-        assertEquals(passwordInvalidMessage, getMessageFromResponse(result));
-    }
+	@Test
+	public void testCreateUserInvalidEmailFormat(@Value("${email.invalid}") String emailInvalidMessage)
+			throws Exception {
+		String json = readJsonFromFile(CREATE_USER_INVALID_EMAIL_JSON);
+		MvcResult result = performPostRequest(json);
+		assertEquals(emailInvalidMessage, getMessageFromResponse(result));
+	}
 
-    private String readJsonFromFile(String filePath) throws IOException {
-        ClassPathResource resource = new ClassPathResource(filePath);
-        return new String(Files.readAllBytes(Paths.get(resource.getURI())));
-    }
+	@Test
+	public void testCreateUserInvalidPasswordFormat(@Value("${password.invalid}") String passwordInvalidMessage)
+			throws Exception {
+		String json = readJsonFromFile(CREATE_USER_INVALID_PASSWORD_JSON);
+		MvcResult result = performPostRequest(json);
+		assertEquals(passwordInvalidMessage, getMessageFromResponse(result));
+	}
 
-    private MvcResult performPostRequest(String json) throws Exception {
-        return mockMvc.perform(
-                MockMvcRequestBuilders.post(BASE_URL)
-                        .contentType(MediaType.APPLICATION_JSON_VALUE)
-                        .content(json))
-                .andReturn();
-    }
+	private String readJsonFromFile(String filePath) throws IOException {
+		ClassPathResource resource = new ClassPathResource(filePath);
+		return new String(Files.readAllBytes(Paths.get(resource.getURI())));
+	}
 
-    private String getMessageFromResponse(MvcResult result) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode responseJson = objectMapper.readTree(result.getResponse().getContentAsString());
-        return responseJson.get("mensaje").asText();
-    }
+	private MvcResult performPostRequest(String json) throws Exception {
+		return mockMvc.perform(
+				MockMvcRequestBuilders.post(BASE_URL).contentType(MediaType.APPLICATION_JSON_VALUE).content(json))
+				.andReturn();
+	}
+
+	private String getMessageFromResponse(MvcResult result) throws IOException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonNode responseJson = objectMapper.readTree(result.getResponse().getContentAsString());
+		return responseJson.get("mensaje").asText();
+	}
 }

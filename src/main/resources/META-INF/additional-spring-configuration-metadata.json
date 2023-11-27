@@ -1,37 +1,39 @@
-{"properties": [
-  {
-    "name": "password.regex",
-    "type": "java.lang.String",
-    "description": "A description for 'password.regex'"
-  },
-  {
-    "name": "password.invalid",
-    "type": "java.lang.String",
-    "description": "A description for 'password.invalid'"
-  },
-  {
-    "name": "email.registered",
-    "type": "java.lang.String",
-    "description": "A description for 'email.registered'"
-  },
-  {
-    "name": "email.invalid",
-    "type": "java.lang.String",
-    "description": "A description for 'email.invalid'"
-  },
-  {
-    "name": "email.regex",
-    "type": "java.lang.String",
-    "description": "A description for 'email.regex'"
-  },
-  {
-    "name": "error.jsonRequest",
-    "type": "java.lang.String",
-    "description": "A description for 'error.jsonRequest'"
-  },
-  {
-    "name": "error.jsonRequest",
-    "type": "java.lang.String",
-    "description": "A description for 'error.jsonRequest'"
-  }
-]}
+{
+	"properties": [
+		{
+			"name": "password.regex",
+			"type": "java.lang.String",
+			"description": "A description for 'password.regex'"
+		},
+		{
+			"name": "password.invalid",
+			"type": "java.lang.String",
+			"description": "A description for 'password.invalid'"
+		},
+		{
+			"name": "email.registered",
+			"type": "java.lang.String",
+			"description": "A description for 'email.registered'"
+		},
+		{
+			"name": "email.invalid",
+			"type": "java.lang.String",
+			"description": "A description for 'email.invalid'"
+		},
+		{
+			"name": "email.regex",
+			"type": "java.lang.String",
+			"description": "A description for 'email.regex'"
+		},
+		{
+			"name": "error.jsonRequest",
+			"type": "java.lang.String",
+			"description": "A description for 'error.jsonRequest'"
+		},
+		{
+			"name": "error.jsonRequest",
+			"type": "java.lang.String",
+			"description": "A description for 'error.jsonRequest'"
+		}
+	]
+}
