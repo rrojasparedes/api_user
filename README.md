@@ -94,3 +94,8 @@ El mensaje indica el tipo de error que ha ocurrido. Pueden ocurrir distintos err
 ```bash
 POST /api/users/create: Crea un nuevo usuario con la información proporcionada en el cuerpo de la solicitud.
 ```
+# Pruebas unitarias
+
+```bash
+/src/test/java/com/sermaluc/springboot/app/UserControllerTest.java
+```
