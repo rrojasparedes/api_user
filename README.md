@@ -2,6 +2,13 @@
 
 Esta API permite la creación de usuarios mediante una solicitud POST a la ruta `/api/user/create`. La solicitud debe incluir un JSON con la siguiente estructura:
 
+# Diagrama
+
+![API-USER drawio](https://github.com/rrojasparedes/api_user/assets/3418191/efa173a9-3941-44ea-9696-00c358fb1d97)
+
+
+# Json de entrada
+
 ```json
 {
    "name":"Rafael Rojas",
@@ -25,9 +32,6 @@ Esta API permite la creación de usuarios mediante una solicitud POST a la ruta 
 # Modo de testeo.
 
 ## Curl
-
-
-Así se mostrará en tu archivo README de GitHub:
 
 ```bash
 curl -X 'POST' \
@@ -87,4 +91,6 @@ El mensaje indica el tipo de error que ha ocurrido. Pueden ocurrir distintos err
 
 # Métodos Disponibles:
 
-POST /create: Crea un nuevo usuario con la información proporcionada en el cuerpo de la solicitud.
+```bash
+POST /api/users/create: Crea un nuevo usuario con la información proporcionada en el cuerpo de la solicitud.
+```
